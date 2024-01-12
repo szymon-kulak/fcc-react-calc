@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/fcc-react-calc/static/css/main.f855e6bc.css",
-    "main.js": "/fcc-react-calc/static/js/main.53187648.js",
+    "main.css": "/fcc-react-calc/static/css/main.330f7c0f.css",
+    "main.js": "/fcc-react-calc/static/js/main.bcc002dc.js",
     "static/js/787.88c2af69.chunk.js": "/fcc-react-calc/static/js/787.88c2af69.chunk.js",
-    "static/media/logo.svg": "/fcc-react-calc/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/fcc-react-calc/index.html",
-    "main.f855e6bc.css.map": "/fcc-react-calc/static/css/main.f855e6bc.css.map",
-    "main.53187648.js.map": "/fcc-react-calc/static/js/main.53187648.js.map",
+    "main.330f7c0f.css.map": "/fcc-react-calc/static/css/main.330f7c0f.css.map",
+    "main.bcc002dc.js.map": "/fcc-react-calc/static/js/main.bcc002dc.js.map",
     "787.88c2af69.chunk.js.map": "/fcc-react-calc/static/js/787.88c2af69.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.53187648.js"
+    "static/css/main.330f7c0f.css",
+    "static/js/main.bcc002dc.js"
   ]
 }
