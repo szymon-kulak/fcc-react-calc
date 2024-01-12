@@ -1,21 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Calculator from './Calculator';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Calculator />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Made by Szymon Kulak.
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/szymon-kulak/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          My GitHub Profile.
         </a>
       </header>
     </div>

@@ -1,0 +1,61 @@
+$digit-color: #4d4d4d;
+$math-color: #666666;
+$ac-color: #ac3939;
+$equals-color: #004466;
+
+.Calculator {
+    position: relative;
+    background-color: black;
+    border: 2px solid #777;
+    padding: 20px;
+    width: 320px;
+}
+
+.calcKeysContainer {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: auto repeat(3,80px);
+    grid-auto-rows: 65px;
+}
+
+.calcKey {
+    position: relative;
+    // width: 80px;
+    // height: 65px;
+    background-color: $digit-color;
+    border: none;
+    outline: 1px solid black;
+    cursor: default;
+    font-size: 20px;
+    color: white;
+    font-family: monospace;
+}
+
+.calcKey:hover {
+    outline: 1px solid #777;
+    z-index: 1;
+    color: black;
+}
+
+.calcKeyMath {
+    background-color: $math-color;
+}
+
+.calcKeyAC {
+    background-color: $ac-color;
+}
+
+.calcKeyEquals {
+    background-color: $equals-color;
+}
+
+.calcKeyWide {
+    grid-column: 1/3;
+    // width: 160px;
+}
+
+.calcKeyTall {
+    grid-row: 4/6;
+    grid-column: 4/5;
+    // height: 130px;
+}
