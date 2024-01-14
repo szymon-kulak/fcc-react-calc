@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Digital';
+    src: url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot');
+    src: url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix')
+        format('embedded-opentype'),
+        url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2')
+        format('woff2'),
+        url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff')
+        format('woff'),
+        url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf')
+        format('truetype'),
+        url('//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7')
+        format('svg');
+}
+
 $digit-color: #4d4d4d;
 $math-color: #666666;
 $ac-color: #ac3939;
@@ -7,8 +22,26 @@ $equals-color: #004466;
     position: relative;
     background-color: black;
     border: 2px solid #777;
-    padding: 20px;
+    padding: 10px;
     width: 320px;
+}
+
+.screen-top {
+    min-height: 20px;
+    font-size: 20px;
+    font-family: digital;
+    color: orange;
+    text-align: right;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.screen-main {
+    font-size: 30px;
+    font-family: digital;
+    color: white;
+    text-align: right;
+    line-height: 40px;
 }
 
 .calcKeysContainer {
@@ -51,11 +84,9 @@ $equals-color: #004466;
 
 .calcKeyWide {
     grid-column: 1/3;
-    // width: 160px;
 }
 
 .calcKeyTall {
     grid-row: 4/6;
     grid-column: 4/5;
-    // height: 130px;
 }
