@@ -9,8 +9,18 @@ function Calculator() {
 	const [isBlankNegative, toggleBlankNegative] = useState(false);
 
 	const calculate = function () {
-		let tempResult = eval(formula);
-		changeFormula(formula + "=" + tempResult);
+        let tempFormula = formula;
+
+        if (isBlankNegative) {
+           tempFormula = formula.slice(0,formula.length-2); 
+        } else if (!parseFloat(formula[formula.length-1])) {
+            tempFormula = formula.slice(0,formula.length-1);
+        }
+
+		let tempResult = eval(tempFormula);
+        tempResult = Math.round(tempResult*10000)/10000; // rounds up to 4 decimal places
+		
+        changeFormula(tempFormula + "=" + tempResult);
 		changeDisplay(tempResult);
 	};
 
@@ -47,12 +57,15 @@ function Calculator() {
 				if (lastAction === "operator" || lastAction === "minus") {
 					changeDisplay(val);
 					changeFormula(formula + val);
+                    changeAction("zero");
 				} else if (lastAction === "equals") {
 					changeDisplay(val);
 					changeFormula("");
+                    changeAction("zero");
 				} else if (display !== 0) {
 					changeDisplay(display + val);
 					changeFormula(formula + val);
+                    changeAction("zero");
 				} else {
 					break;
 				}
@@ -63,10 +76,11 @@ function Calculator() {
 				}
 
 				if (lastAction === "operator" || lastAction === "minus") {
-					changeDisplay(display + "0.");
+					changeDisplay("0.");
 					changeFormula(formula + "0.");
 					toggleDecimal(true);
 					toggleBlankNegative(false);
+                    changeAction("decimal");
 					break;
 				}
 
@@ -74,6 +88,15 @@ function Calculator() {
 					changeDisplay("0.");
 					changeFormula("0.");
 					toggleDecimal(true);
+                    changeAction("decimal");
+					break;
+				}
+
+                if (lastAction === "zero" && !formula) {
+					changeDisplay(display + ".");
+					changeFormula(formula + "0.");
+					toggleDecimal(true);
+                    changeAction("decimal");
 					break;
 				}
 
@@ -81,12 +104,14 @@ function Calculator() {
 					changeDisplay(display + ".");
 					changeFormula(formula + "0.");
 					toggleDecimal(true);
+                    changeAction("decimal");
 					break;
-				}
+				}          
 
 				changeDisplay(display + ".");
 				changeFormula(formula + ".");
 				toggleDecimal(true);
+                changeAction("decimal");
 				break;
 			case "ADD":
 				if (isBlankNegative) {
@@ -111,6 +136,14 @@ function Calculator() {
 					break;
 				}
 
+                if (lastAction === "decimal") {
+                    changeFormula(formula.slice(0, formula.length - 1) + "+");
+                    changeDisplay("+");
+                    changeAction("operator");
+                    toggleDecimal(false);
+                    break; 
+                }
+
 				changeFormula(formula + "+");
 				changeDisplay("+");
 				changeAction("operator");
@@ -124,12 +157,28 @@ function Calculator() {
 					break;
 				}
 
-				if (lastAction === "operator") {
-					toggleBlankNegative(true);
+                if (isBlankNegative) {
+					changeFormula(formula.slice(0, formula.length - 2) + "-");
+					changeDisplay("-");
+					changeAction("operator");
+					toggleBlankNegative(false);
+					break;
 				}
 
 				if (lastAction === "minus") {
 					break;
+				}
+
+                if (lastAction === "decimal") {
+                    changeFormula(formula.slice(0, formula.length - 1) + "-");
+                    changeDisplay("-");
+                    changeAction("operator");
+                    toggleDecimal(false);
+                    break; 
+                }
+
+                if (lastAction === "operator") {
+					toggleBlankNegative(true);
 				}
 
 				changeFormula(formula + "-");
@@ -160,6 +209,14 @@ function Calculator() {
 					break;
 				}
 
+                if (lastAction === "decimal") {
+                    changeFormula(formula.slice(0, formula.length - 1) + "*");
+                    changeDisplay("*");
+                    changeAction("operator");
+                    toggleDecimal(false);
+                    break; 
+                }
+
 				changeFormula(formula + "*");
 				changeDisplay("*");
 				changeAction("operator");
@@ -188,6 +245,14 @@ function Calculator() {
 					break;
 				}
 
+                if (lastAction === "decimal") {
+                    changeFormula(formula.slice(0, formula.length - 1) + "/");
+                    changeDisplay("/");
+                    changeAction("operator");
+                    toggleDecimal(false);
+                    break; 
+                }
+
 				changeFormula(formula + "/");
 				changeDisplay("/");
 				changeAction("operator");
@@ -197,6 +262,7 @@ function Calculator() {
 				if (lastAction === "equals") {
 					break;
 				}
+
 				calculate();
 				toggleDecimal(false);
 				changeAction("equals");
@@ -204,7 +270,9 @@ function Calculator() {
 			case "CLEAR":
 				changeFormula("");
 				changeDisplay(0);
+                changeAction("");
 				toggleDecimal(false);
+                toggleBlankNegative(false);
 				break;
 			default:
 				break;
