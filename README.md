@@ -1,4 +1,4 @@
-# Fully Functional Foolproof Fantastic Calculator Component
+# Foolproof Calculator Component
 
 This is a calculator web-app I wrote for my [FreeCodeCamp](https://www.freecodecamp.org/) Front End Development Libraries Certification. 
 
